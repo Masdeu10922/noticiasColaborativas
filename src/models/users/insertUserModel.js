@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 
 const getDb = require('../../db/getDb');
 
-const insertUserModel = async (firstName, lastName,  email, password, photo, biography) => {
+const insertUserModel = async (userName, email, password) => {
     let connection;
 
     try {
@@ -15,9 +15,9 @@ const insertUserModel = async (firstName, lastName,  email, password, photo, bio
         );
 
         //Si existe algún usuario con ese email lanzamos un error.
-        if (users.length > 0){
+        if (users.length > 0) {
             const err = new Error('Ya existe un usuario con este email');
-            err.hhtpStatus = 409;
+            err.httpStatus = 409;
             throw err;
         }
 
@@ -26,8 +26,8 @@ const insertUserModel = async (firstName, lastName,  email, password, photo, bio
 
         //Insertamos el usuario.
         await connection.query(
-            `INSERT INTO users(firstName, lastName,  email, password, photo, biography) VALUES(?, ?, ?, ?, ?, ?)`,
-            [firstName, lastName, email, hashedPass, photo, biography]
+            `INSERT INTO users(userName, email, password) VALUES(?, ?, ?)`,
+            [userName, email, hashedPass]
         );
     } finally {
         if (connection) connection.release();

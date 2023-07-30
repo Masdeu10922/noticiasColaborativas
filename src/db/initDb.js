@@ -10,12 +10,11 @@ const main = async () => {
         // Creamos la tabla de Usuarios
         await connection.query(`
             CREATE TABLE IF NOT EXISTS users (
-                id CHAR(36) PRIMARY KEY NOT NULL,
+                id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 email VARCHAR(100) UNIQUE NOT NULL,
-                firstName VARCHAR(30) NOT NULL,
-                lastName VARCHAR(30) NOT NULL,
+                userName VARCHAR(30) NOT NULL,
                 password VARCHAR(100) NOT NULL,
-                biography TEXT NOT NULL,
+                biography TEXT,
                 photo VARCHAR(100),
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
@@ -24,13 +23,13 @@ const main = async () => {
         // Creamos la tabla de noticias.
         await connection.query(`
             CREATE TABLE IF NOT EXISTS news (
-                id CHAR(36) PRIMARY KEY NOT NULL,
+                id CHAR(36) PRIMARY KEY,
                 title VARCHAR(50) NOT NULL,
                 photo VARCHAR(100),
                 intro TEXT NOT NULL,
                 text TEXT NOT NULL,
                 item VARCHAR(50) NOT NULL,
-                userId CHAR(36) NOT NULL,
+                userId INT UNSIGNED NOT NULL,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (userId) REFERENCES users(id)
             )
@@ -38,9 +37,9 @@ const main = async () => {
         // Tabla de votos.
         await connection.query(`
             CREATE TABLE IF NOT EXISTS votes (
-                id CHAR(36) PRIMARY KEY NOT NULL,
+                id CHAR(36) PRIMARY KEY,
                 votesType BOOLEAN NOT NULL,
-                userId CHAR(36) NOT NULL,
+                userId INT UNSIGNED NOT NULL,
                 newsId CHAR(36) NOT NULL,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (userId) REFERENCES users(id),

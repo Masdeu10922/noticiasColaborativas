@@ -1,7 +1,7 @@
 {
   "name": "proyecto-2backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Implementar una API que permita gestionar noticias colaborativas, estilo reddit o menéame, donde los usuarios puedan registrarse y publicar una noticia en una serie de categorías temáticas fijas.",
   "main": "app.js",
   "scripts": {
     "initDb": "node ./src/db/initDb.js",
