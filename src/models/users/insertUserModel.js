@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 
 const getDb = require('../../db/getDb');
+const { emailAlreadyRegisteredError } = require('../../services/errorService');
 
 const insertUserModel = async (userName, email, password) => {
     let connection;
@@ -16,9 +17,7 @@ const insertUserModel = async (userName, email, password) => {
 
         //Si existe algún usuario con ese email lanzamos un error.
         if (users.length > 0) {
-            const err = new Error('Ya existe un usuario con este email');
-            err.httpStatus = 409;
-            throw err;
+            emailAlreadyRegisteredError();
         }
 
         // Encriptamos la contraseña.
