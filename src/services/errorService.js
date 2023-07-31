@@ -6,6 +6,20 @@ module.exports = {
             message: 'El email ya está registrado',
         };
     },
+    invalidCredentialsError() {
+        throw {
+            httpStatus: 401, 
+            code: 'INVALID_CREDENTIALS',
+            message: 'Credenciales invalidas',
+        };
+    },
+    missingFields(){
+        throw {
+            httpStatus: 400, 
+            code: 'MISSING_FIELDS',
+            message: 'Faltan campos',
+        };
+    },
     notFoundError() {
         throw {
             httpStatus: 404,

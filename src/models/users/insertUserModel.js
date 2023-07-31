@@ -11,7 +11,7 @@ const insertUserModel = async (userName, email, password) => {
 
         // Buscamos en la base de datos algún usuario con ese email.
         let [users] = await connection.query(
-            `SELECT id FROM users WHERE email = ?`,
+            `SELECT uid FROM users WHERE email = ?`,
             [email]
         );
 

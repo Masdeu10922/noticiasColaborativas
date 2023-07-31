@@ -10,7 +10,7 @@ const main = async () => {
         // Creamos la tabla de Usuarios
         await connection.query(`
             CREATE TABLE IF NOT EXISTS users (
-                id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                uId INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 email VARCHAR(100) UNIQUE NOT NULL,
                 userName VARCHAR(30) NOT NULL,
                 password VARCHAR(100) NOT NULL,
@@ -23,7 +23,7 @@ const main = async () => {
         // Creamos la tabla de noticias.
         await connection.query(`
             CREATE TABLE IF NOT EXISTS news (
-                id CHAR(36) PRIMARY KEY,
+                nId CHAR(36) PRIMARY KEY,
                 title VARCHAR(50) NOT NULL,
                 photo VARCHAR(100),
                 intro TEXT NOT NULL,
@@ -31,19 +31,19 @@ const main = async () => {
                 item VARCHAR(50) NOT NULL,
                 userId INT UNSIGNED NOT NULL,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (userId) REFERENCES users(id)
+                FOREIGN KEY (userId) REFERENCES users(uId)
             )
         `);
         // Tabla de votos.
         await connection.query(`
             CREATE TABLE IF NOT EXISTS votes (
-                id CHAR(36) PRIMARY KEY,
+                vId CHAR(36) PRIMARY KEY,
                 votesType BOOLEAN NOT NULL,
                 userId INT UNSIGNED NOT NULL,
                 newsId CHAR(36) NOT NULL,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (userId) REFERENCES users(id),
-                FOREIGN KEY (newsId) REFERENCES news(id)
+                FOREIGN KEY (userId) REFERENCES users(uid),
+                FOREIGN KEY (newsId) REFERENCES news(nId)
             )
         `);
         console.log('¡Tablas creadas!');

@@ -1,4 +1,4 @@
-# Wed de noticias colaborativas.
+# Web de noticias colaborativas.
 
 Implementar una API que permita gestionar noticias colaborativas, estilo reddit o menéame, donde los usuarios puedan registrarse y publicar una noticia en una serie de categorías temáticas fijas.
 
@@ -42,8 +42,8 @@ Implementar una API que permita gestionar noticias colaborativas, estilo reddit 
 
 ## Endpoints del usuario ✅
 
--   **POST** - [`/users/register`] - Crea un nuevo usuario. 
--   **POST** - [`/users/login`] - Logea a un usuario. 
+-   **POST** - [`/users/register`] - Crea un nuevo usuario. ✅
+-   **POST** - [`/users/login`] - Logea a un usuario. ✅
 -   **PUT** - [`/users/:userId`] - Permite acceder al perfil público de un usuario. 
 -   **PUT** - [`/users/photo`] - Permite actualizar la foto del usuario.
 -   **GET** - [`/users`] - Retorna información privada del usuario con el id del token.
