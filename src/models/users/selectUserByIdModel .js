@@ -7,7 +7,7 @@ const selectUserByIdModel = async (userId) => {
         connection = await getDb();
         // Comprobamos si hay algún usuario con el id proporcionado
         const [users] = await connection.query(
-            `SELECT id, username, photo, biography, createdAt FROM users WHERE id = ?`,
+            `SELECT id, username, email, photo, biography, createdAt FROM users WHERE id = ?`,
             [userId]
         );
 
