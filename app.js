@@ -5,7 +5,7 @@ const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
 
 //Importamos las rutas
-const routes = require('./src/routes/userRoutes');
+const routes = require('./src/routes');
 
 //Creamos el servidor
 const app = express();

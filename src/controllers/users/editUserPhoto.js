@@ -1,13 +1,13 @@
 const selectUserByIdModel = require('../../models/users/selectUserByIdModel ');
 const updateUserPhotoModel = require('../../models/users/updateUserPhotoModel');
 const deletePhotoService = require('../../services/deletePhotoService');
-const { missingFields } = require('../../services/errorService');
+const { missingFieldsError } = require('../../services/errorService');
 const savePhotoService = require('../../services/savePhotoService');
 
 const editUserPhoto = async (req, res, next) => {
     try {
         if (!req.files?.photo) {
-            missingFields();
+            missingFieldsError();
         }
 
         // Obtenemos los datos del usuario para comprobar si ya tiene una foto

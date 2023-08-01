@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {
-    missingFields,
+    missingFieldsError,
     invalidCredentialsError,
 } = require('../../services/errorService');
 const selectUserByEmailModel = require('..//..//models/users/selectUserByEmailModel');
@@ -10,7 +10,7 @@ const loginUser = async (req, res, next) => {
     try {
         const { email, password } = req.body;
         if (!email || !password) {
-            missingFields();
+            missingFieldsError();
         }
 
         const user = await selectUserByEmailModel(email, password);

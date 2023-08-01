@@ -20,7 +20,7 @@ module.exports = {
             message: 'Credenciales invalidas',
         };
     },
-    missingFields() {
+    missingFieldsError() {
         throw {
             httpStatus: 400,
             code: 'MISSING_FIELDS',

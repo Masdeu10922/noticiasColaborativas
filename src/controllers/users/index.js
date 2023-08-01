@@ -1,3 +1,4 @@
+const editUserPass = require('./editUserPass');
 const editUserPhoto = require('./editUserPhoto');
 const getOwnUser = require('./getOwnUser');
 const getUserProfile = require('./getUserProfile');
@@ -10,4 +11,5 @@ module.exports = {
     getUserProfile,
     getOwnUser,
     editUserPhoto,
+    editUserPass,
 };
