@@ -7,7 +7,7 @@ const selectUserByEmailModel = async (email) => {
         connection = await getDb();
         // Comprobamos si hay algún usuario con el email proporcionado
         const [users] = await connection.query(
-            'SELECT uid, password FROM users WHERE email =?',
+            'SELECT id, password FROM users WHERE email =?',
             [email]
         );
 
