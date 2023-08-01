@@ -6,6 +6,13 @@ module.exports = {
             message: 'El email ya está registrado',
         };
     },
+    deleteFileError() {
+        throw {
+            httpStatus: 409,
+            code: 'FILE_DELETE_FAILED',
+            message: 'Error al eliminar el archivo del disco',
+        };
+    },
     invalidCredentialsError() {
         throw {
             httpStatus: 401,
@@ -34,6 +41,13 @@ module.exports = {
             httpStatus: 404,
             code: 'RESOURCE_NOT_FOUND',
             message: 'El recurso requerido no existe',
+        };
+    },
+    saveFileError() {
+        throw {
+            httpStatus: 500,
+            code: 'FILE_SAVED_FILED',
+            message: 'Error al guardar el archivo en el disco',
         };
     },
     userAlreadyRegisteredError() {

@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
 
 //Importamos las rutas
@@ -13,6 +14,9 @@ const app = express();
 app.use(morgan('dev'));
 //Middelware que "desencripta" un body en formato "raw" creando la propiedad "body" en el objeto "request"
 app.use(express.json());
+
+//Middelware que "desencripta" un body en formato "form-data" creando la propiedad "body" y la propiedad "files" en el objeto "request"
+app.use(fileUpload());
 
 // Middelware que indica a express dónde están las rutas.
 app.use(routes);
