@@ -5,4 +5,9 @@ const router = express.Router();
 const authUser = require('../middlewares/authUser');
 const userExists = require('../middlewares/userExists');
 
+const { newNews } = require('../controllers/news');
+
+// Crear una nueva noticia
+router.post('/news', authUser, userExists, newNews);
+
 module.exports = router;
