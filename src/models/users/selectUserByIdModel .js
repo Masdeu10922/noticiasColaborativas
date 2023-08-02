@@ -1,5 +1,5 @@
 const getDb = require('../../db/getDb');
-const { notFoundError } = require('../../services/errorService');
+
 
 const selectUserByIdModel = async (userId) => {
     let connection;

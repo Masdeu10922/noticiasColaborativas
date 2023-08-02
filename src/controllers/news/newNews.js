@@ -32,7 +32,18 @@ const newNews = async (req, res, next) => {
 
         res.send({
             status: 'ok',
-            message: 'Noticia creada',
+            data:{
+                news: {
+                    id: newsId,
+                    title,
+                    photo,
+                    intro,
+                    text,
+                    item,
+                    userId: req.user.id,
+                    createAt: new Date()
+                }
+            }
         });
     } catch (err) {
         next(err);

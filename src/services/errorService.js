@@ -65,4 +65,22 @@ module.exports = {
             message: 'Token invalido',
         };
     },
+
+    unauthorizedUserError() {
+        throw {
+            httpStatus: 409,
+            code: 'UNAUTHORIZED',
+            message: 'El usuario no esta autorizado para hacer esta operación',
+        };
+        
+    },
+
+    photoLimitReachedError() {
+        throw {
+            httpStatus: 409,
+            code: 'PHOTO_LIMIT_REACHED',
+            message: 'Solo se puede añadir una foto a la noticia.',
+        };
+    }
+
 };
