@@ -1,8 +1,7 @@
-const notFoundController = (req, res, next) => {
-    res.status(404).send({
-        status: 'ok',
-        message: 'Ruta no encontrada',
-    });
+const { notFoundError } = require('../../services/errorService');
+
+const notFound = (req, res, next) => {
+    next(notFoundError());
 };
 
-module.exports = notFoundController;
+module.exports = notFound;

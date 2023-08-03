@@ -5,6 +5,6 @@ const errorController = (err, req, res, next) => {
         status: 'error',
         message: err.message,
     });
-}; 
+};
 
 module.exports = errorController;

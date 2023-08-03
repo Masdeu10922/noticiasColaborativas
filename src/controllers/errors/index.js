@@ -1,5 +1,5 @@
-const errorController = require("./errorController");
-const notFoundController = require("./notFoundController");
+const errorController = require('./errorController');
+const notFoundController = require('./notFoundController');
 
 module.exports = {
     errorController,

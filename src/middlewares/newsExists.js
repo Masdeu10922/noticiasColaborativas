@@ -16,7 +16,7 @@ const newsExists = async (req, res, next) => {
 
         // Lanzamos un error si el usuario no existe
         if (news.length < 1) {
-            notFoundError();
+            notFoundError('news');
         }
         next();
     } catch (err) {

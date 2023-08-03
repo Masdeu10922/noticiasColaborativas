@@ -5,6 +5,11 @@ const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
 
 //Importamos las rutas
+const {
+    errorController,
+    notFoundController,
+} = require('./src/controllers/errors');
+
 const routes = require('./src/routes');
 
 //Creamos el servidor
@@ -25,20 +30,10 @@ app.use(express.static(process.env.UPLOADS_DIR));
 app.use(routes);
 
 //Middelware de error.
-app.use((err, req, res, next) => {
-    res.status(err.httpStatus || 500).send({
-        status: 'error',
-        message: err.message,
-    });
-});
+app.use(errorController);
 
 //Middelware de ruta no enconrada.
-app.use((req, res) => {
-    res.status(404).send({
-        status: 'error',
-        message: 'Ruta no encontrada',
-    });
-});
+app.use(notFoundController);
 
 //Ponemos el servidor a escuchar peticiones en un pueto dado.
 app.listen(process.env.PORT, () => {

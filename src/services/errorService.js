@@ -36,11 +36,11 @@ module.exports = {
         };
     },
 
-    notFoundError() {
+    notFoundError(resource) {
         throw {
             httpStatus: 404,
             code: 'RESOURCE_NOT_FOUND',
-            message: 'El recurso requerido no existe',
+            message: `El recurso requerido ${resource} no existe`,
         };
     },
     saveFileError() {
@@ -72,7 +72,6 @@ module.exports = {
             code: 'UNAUTHORIZED',
             message: 'El usuario no esta autorizado para hacer esta operación',
         };
-        
     },
 
     photoLimitReachedError() {
@@ -81,6 +80,12 @@ module.exports = {
             code: 'PHOTO_LIMIT_REACHED',
             message: 'Solo se puede añadir una foto a la noticia.',
         };
-    }
-
+    },
+    voteAlreadyExistError() {
+        throw {
+            httpStatus: 409,
+            code: 'VOTE_ALREADY_EXISTS',
+            message: 'No se puede votar más de una vez la misma noticia.',
+        };
+    },
 };
