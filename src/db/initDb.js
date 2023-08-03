@@ -28,7 +28,7 @@ const main = async () => {
                 photo VARCHAR(100),
                 intro TEXT NOT NULL,
                 text TEXT NOT NULL,
-                item VARCHAR(50) NOT NULL,
+                topic VARCHAR(50) NOT NULL,
                 userId INT UNSIGNED NOT NULL,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (userId) REFERENCES users(id)

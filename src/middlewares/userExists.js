@@ -6,10 +6,14 @@ const userExists = async (req, res, next) => {
     try {
         connection = await getDb();
 
+        // Intentamos obtener el id del usuario
+        const userId = req.user?.id || req.params.userId;
+
         const [users] = await connection.query(
             `SELECT id FROM users WHERE id = ?`,
-            [req.user.id]
+            [userId]
         );
+
         // Lanzamos un error si el usuario no existe
         if (users.length < 1) {
             notFoundError();

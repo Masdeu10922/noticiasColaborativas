@@ -1,6 +1,5 @@
 const getDb = require('../../db/getDb');
 
-
 const selectUserByIdModel = async (userId) => {
     let connection;
     try {

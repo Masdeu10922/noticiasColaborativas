@@ -18,6 +18,9 @@ app.use(express.json());
 //Middelware que "desencripta" un body en formato "form-data" creando la propiedad "body" y la propiedad "files" en el objeto "request"
 app.use(fileUpload());
 
+// defino directorio static
+app.use(express.static(process.env.UPLOADS_DIR));
+
 // Middelware que indica a express dónde están las rutas.
 app.use(routes);
 

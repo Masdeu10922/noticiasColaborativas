@@ -13,6 +13,7 @@ const newsExists = async (req, res, next) => {
             `SELECT id FROM news WHERE id = ?`,
             [newsId]
         );
+
         // Lanzamos un error si el usuario no existe
         if (news.length < 1) {
             notFoundError();

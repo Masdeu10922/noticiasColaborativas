@@ -26,7 +26,7 @@ Implementar una API que permita gestionar noticias colaborativas, estilo reddit 
 | photo     | VARCHAR(200) | Foto de la noticia                |
 | intro     | VARCHAR(100) | Entradilla de la noticia          |
 | text      | TEXT         | Texto de la noticia               |
-| itemNews  | VARCHAR(100) | Tema de la noticia                |
+| topic     | VARCHAR(100) | Tema de la noticia                |
 | createdAt | DATETIME     | Fecha de creación de la noticia   |
 | userId    | VARCHAR(36)  | Identidicador del usuario         |
 
