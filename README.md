@@ -58,9 +58,9 @@ valid topics: ciencia, deportes, cultura, politica, actualidad
 -   **GET** - [`/users/:userId`] - Permite acceder al perfil público de un usuario.✅
 -   **GET** - [`/users/users`] - Permite acceder al perfil privado de un usuario.✅
 -   **PUT** - [`/users/photo`] - Permite actualizar la foto del usuario.✅
-    **PUT** - [`/users/password`] - Permite actualizar la contraseña usuario.✅
-    **PUT** - [`/users/email`] - Permite actualizar el email usuario.✅
-    **PUT** - [`/users/biography`] - Permite actualizar la biografia del usuario.✅
+-   **PUT** - [`/users/password`] - Permite actualizar la contraseña usuario.✅
+-   **PUT** - [`/users/email`] - Permite actualizar el email usuario.✅
+-   **PUT** - [`/users/biography`] - Permite actualizar la biografia del usuario.✅
 
 ## Endpoints de las noticias✅
 
