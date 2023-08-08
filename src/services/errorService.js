@@ -1,4 +1,20 @@
 module.exports = {
+    invalidVoteError() {
+        throw {
+            httpStatus: 400,
+            code: 'INVALID_VOTE',
+            message: 'Voto no valido solo se puede votar con 0 o 1',
+        };
+    },
+
+    cannotVoteOwnNewsError() {
+        throw {
+            httpStatus: 403,
+            code: 'CANNOT_VOTE_OWN_NEWS',
+            message: 'No puedes votar tu propia noticia',
+        };
+    },
+
     emailAlreadyRegisteredError() {
         throw {
             httpStatus: 409,
@@ -18,6 +34,14 @@ module.exports = {
             httpStatus: 401,
             code: 'INVALID_CREDENTIALS',
             message: 'Credenciales invalidas',
+        };
+    },
+    invalidTopicError() {
+        throw {
+            httpStatus: 409,
+            code: 'INVALID_TOPIC',
+            message:
+                'Tema no valido, los temas validos son: ciencia, deportes, cultura, politica, actualidad',
         };
     },
     missingFieldsError() {
@@ -40,7 +64,7 @@ module.exports = {
         throw {
             httpStatus: 404,
             code: 'RESOURCE_NOT_FOUND',
-            message: `El recurso requerido ${resource} no existe`,
+            message: `El recurso '${resource}' requerido no existe`,
         };
     },
     saveFileError() {
@@ -81,11 +105,11 @@ module.exports = {
             message: 'Solo se puede añadir una foto a la noticia.',
         };
     },
-    voteAlreadyExistError() {
+    voteAlreadyExistsError() {
         throw {
-            httpStatus: 409,
+            httpStatus: 409, // Conflict
             code: 'VOTE_ALREADY_EXISTS',
-            message: 'No se puede votar más de una vez la misma noticia.',
+            message: 'No se puede votar más de una vez la misma noticia',
         };
     },
 };

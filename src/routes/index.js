@@ -1,3 +1,4 @@
+// Importamos las dependencias.
 const express = require('express');
 const router = express.Router();
 
@@ -5,7 +6,7 @@ const router = express.Router();
 const userRoutes = require('./userRoutes');
 const newsRoutes = require('./newsRoutes');
 
-// Indicamos a express donde estan las rutas de los usuarios y las entradas
+// Indicamos a express donde estan las rutas de los usuarios y las noticias
 router.use(userRoutes);
 router.use(newsRoutes);
 

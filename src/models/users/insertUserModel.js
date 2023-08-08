@@ -1,9 +1,12 @@
+// Importamos las dependencias.
 const bcrypt = require('bcrypt');
 
+// Importamos la función que devuelve una conexión con la base de datos.
 const getDb = require('../../db/getDb');
+
 const { emailAlreadyRegisteredError } = require('../../services/errorService');
 
-const insertUserModel = async (userName, email, password) => {
+const insertUserModel = async (userName, email, password, biography) => {
     let connection;
 
     try {
@@ -25,8 +28,8 @@ const insertUserModel = async (userName, email, password) => {
 
         //Insertamos el usuario.
         await connection.query(
-            `INSERT INTO users(userName, email, password) VALUES(?, ?, ?)`,
-            [userName, email, hashedPass]
+            `INSERT INTO users(userName, email, password, biography) VALUES(?, ?, ?, ?)`,
+            [userName, email, hashedPass, biography]
         );
     } finally {
         if (connection) connection.release();

@@ -1,4 +1,7 @@
+// Importamos la función que devuelve una conexión con la base de datos.
 const getDb = require('../db/getDb');
+
+// Importamos los errores.
 const { notFoundError } = require('../services/errorService');
 
 const newsExists = async (req, res, next) => {
@@ -6,7 +9,7 @@ const newsExists = async (req, res, next) => {
     try {
         connection = await getDb();
 
-        //Obtenemos el id d ela entrada de los path params.
+        //Obtenemos el id d ela noticia de los path params.
         const { newsId } = req.params;
 
         const [news] = await connection.query(
@@ -16,7 +19,7 @@ const newsExists = async (req, res, next) => {
 
         // Lanzamos un error si el usuario no existe
         if (news.length < 1) {
-            notFoundError('news');
+            notFoundError('noticia');
         }
         next();
     } catch (err) {

@@ -8,53 +8,56 @@ Implementar una API que permita gestionar noticias colaborativas, estilo reddit 
 
 | Campo     | Tipo         | Descripción                          |
 | --------- | ------------ | ------------------------------------ |
-| id        | CHAR(36)     | Identificador único del usuario      |
+| id        | INT UNSIGNED | Identificador único del usuario      |
 | email     | VARCHAR(100) | Correo electrónico del usuario       |
+| userName  | VARCHAR(100) | Nombre del usuario                   |
 | password  | VARCHAR(100) | Contraseña del usuario (hash)        |
-| firstName | VARCHAR(50)  | Nombre del usuario                   |
-| lastName  | VARCHAR(100) | Apellidos del usuario                |
 | biography | TEXT         | Biogradía del usuario                |
-| photo     | VARCHAR(200) | Foto del usuario                     |
+| photo     | VARCHAR(100) | Foto del usuario                     |
 | createdAt | DATETIME     | Fecha y hora de creación del usuario |
 
 ### news
 
 | Campo     | Tipo         | Descripción                       |
 | --------- | ------------ | --------------------------------- |
-| id        | VARCHAR(36)  | Identificador único de la entrada |
+| id        | INT UNSIGNED | Identificador único de la noticia |
 | title     | VARCHAR(100) | Nombre del usuario                |
 | photo     | VARCHAR(200) | Foto de la noticia                |
-| intro     | VARCHAR(100) | Entradilla de la noticia          |
+| intro     | TEXT         | Entradilla de la noticia          |
 | text      | TEXT         | Texto de la noticia               |
-| topic     | VARCHAR(100) | Tema de la noticia                |
+| topic     | ENUM         | Tema de la noticia                |
+| userId    | INT UNSIGNED | Identidicador del usuario         |
 | createdAt | DATETIME     | Fecha de creación de la noticia   |
-| userId    | VARCHAR(36)  | Identidicador del usuario         |
+
+valid topics: ciencia, deportes, cultura, politica, actualidad
 
 ### votes
 
-| Campo     | Tipo        | Descripción                                     |
-| --------- | ----------- | ----------------------------------------------- |
-| id        | VARCHAR(36) | Identificador único de la entrada               |
-| votesTipe | ENUM        | Registrar si el voto es "positivo" o "negativo" |
-| newsId    | VARCHAR(36) | Identidicador de la noticia                     |
-| usersId   | VARCHAR(36) | Identidicador del usuario                       |
-| createdAt | DATETIME    | Fecha de creación del voto                      |
+| Campo     | Tipo         | Descripción                                     |
+| --------- | ------------ | ----------------------------------------------- |
+| id        | INT UNSIGNED | Identificador único de la noticia               |
+| value     | TINYINT      | Registrar si el voto es "positivo" o "negativo" |
+| usersId   | INT UNSIGNED | Identidicador del usuario                       |
+| newsId    | INT UNSIGNED | Identidicador de la noticia                     |
+| createdAt | DATETIME     | Fecha de creación del voto                      |
 
 ## Endpoints del usuario ✅
 
 -   **POST** - [`/users/register`] - Crea un nuevo usuario. ✅
--   **POST** - [`/users/login`] - Logea a un usuario. ✅
--   **GET** - [`/users/:userId`] - Permite acceder al perfil público de un usuario.
--   **GET** - [`/users/users`] - Permite acceder al perfil privado de un usuario.
--   **PUT** - [`/users/photo`] - Permite actualizar la foto del usuario.
--   **GET** - [`/users`] - Retorna información privada del usuario con el id del token.
-    **PUT** - [`/users/password`] - Permite actualizar la contraseña usuario.
+-   **POST** - [`/users/login`] - Loguea a un usuario. ✅
+-   **GET** - [`/users/:userId`] - Permite acceder al perfil público de un usuario.✅
+-   **GET** - [`/users/users`] - Permite acceder al perfil privado de un usuario.✅
+-   **PUT** - [`/users/photo`] - Permite actualizar la foto del usuario.✅
+    **PUT** - [`/users/password`] - Permite actualizar la contraseña usuario.✅
+    **PUT** - [`/users/email`] - Permite actualizar el email usuario.✅
+    **PUT** - [`/users/biography`] - Permite actualizar la biografia del usuario.✅
 
 ## Endpoints de las noticias✅
 
--   **POST** - [`/news`] - Permite añadir una noticia.
--   **GET** - [`/news/:newsId`] - Retorna información de una noticia.
--   **POST** - [`/news/:newsId/photo`] - Añadir una foto a una noticia.
--   **POST** - [`/news/:newsId/votes`] - Votar una noticia positivamente o negativamente.
--   **DELETE** - [`/news/:newsId/delete`] - Borrar una noticia.
--   **PUT** - [`/news/:newsId/`] - Edita una noticia.
+-   **POST** - [`/news`] - Permite añadir una noticia.✅
+-   **GET** - [`/news/:newsId`] - Retorna información de una noticia.✅
+-   **GET** - [`/news`] - Retorna el listado de noticias.✅
+-   **POST** - [`/news/:newsId/photo`] - Añadir una foto a una noticia.✅
+-   **POST** - [`/news/:newsId/votes`] - Votar una noticia positivamente o negativamente.✅
+-   **DELETE** - [`/news/:newsId/delete`] - Borrar una noticia. ✅
+-   **PUT** - [`/news/:newsId/`] - Edita una noticia.✅

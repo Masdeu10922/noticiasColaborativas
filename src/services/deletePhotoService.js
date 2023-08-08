@@ -1,5 +1,8 @@
+// Importamos las dependencias.
 const fs = require('fs/promises');
 const path = require('path');
+
+// Importamos los errores.
 const { deleteFileError } = require('./errorService');
 
 const deletePhotoService = async (imgName) => {

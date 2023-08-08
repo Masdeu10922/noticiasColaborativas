@@ -1,22 +1,37 @@
+// Importamos las dependencias.
 const express = require('express');
 const router = express.Router();
 
 //Importamos las funciones controladoras necesarias.
-const { authUser, userExists, newsExists, canEdit } = require('../middlewares');
+const {
+    authUser,
+    userExists,
+    newsExists,
+    canEdit,
+    authUserOptional,
+} = require('../middlewares');
 
-const { newNews, addNewsPhoto, deleteNews } = require('../controllers/news');
+const {
+    newNewsController,
+    deleteNewsController,
+    voteNewsController,
+    listNewsController,
+    modifyNewsController,
+    getNewsController,
+    addNewsPhotoController,
+} = require('../controllers/news');
 
 // Crear una nueva noticia
-router.post('/news', authUser, userExists, newNews);
+router.post('/news', authUser, userExists, newNewsController);
 
-//Agregar una foto a una entrada existente
+//Agregar una foto a una noticia existente
 router.post(
     '/news/:newsId/photos',
     authUser,
     userExists,
     newsExists,
     canEdit,
-    addNewsPhoto
+    addNewsPhotoController
 );
 
 // Eliminar una noticia
@@ -26,7 +41,35 @@ router.delete(
     userExists,
     newsExists,
     canEdit,
-    deleteNews
+    deleteNewsController
 );
+
+// Modificar una noticia
+router.put(
+    '/news/:newsId',
+    authUser,
+    userExists,
+    newsExists,
+    canEdit,
+    modifyNewsController
+);
+
+// Obtener el listado de noticias.
+router.get('/news', authUserOptional, listNewsController);
+
+//Vota una noticia existente
+router.post(
+    '/news/:newsId/votes',
+    authUser,
+    userExists,
+    newsExists,
+    voteNewsController
+);
+
+// Obtener info de una noticia concreta
+router.get('/news/:newsId', authUserOptional, newsExists, getNewsController);
+
+// Obtener noticias de un tema especifico
+router.get('/news?:topic', authUserOptional, newsExists, listNewsController);
 
 module.exports = router;

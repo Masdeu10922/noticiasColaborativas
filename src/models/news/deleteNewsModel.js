@@ -1,6 +1,7 @@
+// Importamos la función que devuelve una conexión con la base de datos.
 const getDb = require('../../db/getDb');
 
-const deleteNewsModel = async (newsId) => {
+const deleteNewsControllerModel = async (newsId) => {
     let connection;
     try {
         connection = await getDb();
@@ -12,4 +13,4 @@ const deleteNewsModel = async (newsId) => {
     }
 };
 
-module.exports = deleteNewsModel;
+module.exports = deleteNewsControllerModel;

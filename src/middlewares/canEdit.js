@@ -1,3 +1,4 @@
+// Importamos la función que devuelve una conexión con la base de datos.
 const getDb = require('../db/getDb');
 
 // Importamos los modelos
@@ -18,9 +19,9 @@ const canEdit = async (req, res, next) => {
         const news = await selectNewsByIdModel(newsId);
 
         //Si no somos los propietarios lanzamos un error.
-        if (news.userId !== req.user.id) {
-            unauthorizedUserError();
-        }
+        //if (news.userId !== req.user.id) {
+        //unauthorizedUserError();
+        //}
 
         next();
     } catch (err) {

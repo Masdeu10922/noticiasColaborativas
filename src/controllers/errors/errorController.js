@@ -1,3 +1,4 @@
+// Función controladora final que utilizaremos en el middleware de error.
 const errorController = (err, req, res, next) => {
     console.error(err);
 
