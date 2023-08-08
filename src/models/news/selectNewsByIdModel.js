@@ -13,6 +13,7 @@ const selectNewsByIdModel = async (newsId, userId = '') => {
                 N.title,
                 N.topic,
                 N.photo,
+                N.text,
                 U.userName,
                 BIT_OR(V.userId = ?) AS votedByMe,
                 SUM(CASE WHEN V.value = 1 THEN 1 ELSE 0 END) AS vPos,
@@ -36,6 +37,7 @@ const selectNewsByIdModel = async (newsId, userId = '') => {
             title: news[0].title,
             topic: news[0].topic,
             photo: news[0].photo,
+            text: news[0].text,
             userName: news[0].userName,
             votedByMe: news[0].votedByMe,
             votes: {

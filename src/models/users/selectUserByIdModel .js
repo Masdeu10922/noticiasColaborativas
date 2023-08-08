@@ -7,7 +7,7 @@ const selectUserByIdModel = async (userId) => {
         connection = await getDb();
         // Comprobamos si hay algún usuario con el id proporcionado, y también seleccionamos las noticias creadas por ese usuario.
         const [users] = await connection.query(
-            `SELECT u.id AS user_id, u.username, u.photo AS user_photo, u.biography, u.createdAt AS user_createdAt,
+            `SELECT u.id AS user_id, u.username, u.photo AS user_photo, u.email, u.biography, u.createdAt AS user_createdAt,
             n.id AS news_id, n.title, n.photo AS news_photo, n.intro, n.text, n.topic, n.createdAt AS news_createdAt,
             SUM(CASE WHEN v.value = 1 THEN 1 ELSE 0 END) AS vPos,
             SUM(CASE WHEN v.value = 0 THEN 1 ELSE 0 END) AS vNeg

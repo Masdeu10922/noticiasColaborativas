@@ -155,7 +155,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/users/:userId",
+							"raw": "http://localhost:8000/users/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -163,13 +163,7 @@
 							"port": "8000",
 							"path": [
 								"users",
-								":userId"
-							],
-							"variable": [
-								{
-									"key": "userId",
-									"value": "1"
-								}
+								"2"
 							]
 						}
 					},
@@ -195,18 +189,6 @@
 							"port": "8000",
 							"path": [
 								"users"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "userId",
-									"value": "1",
-									"disabled": true
-								}
 							]
 						}
 					},

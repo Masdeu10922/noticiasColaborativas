@@ -2,6 +2,16 @@
 
 Implementar una API que permita gestionar noticias colaborativas, estilo reddit o menéame, donde los usuarios puedan registrarse y publicar una noticia en una serie de categorías temáticas fijas.
 
+## Instalar
+
+Instalar las dependencias mediante el comando npm install o npm i.
+
+Guardar el archivo .env.example como .env y cubrir los datos necesarios.
+
+Ejecutar npm run initDb para crear las tablas necesarias en la base de datos.
+
+Ejecutar npm run dev para lanzar el servidor.
+
 ## Base de datos
 
 ### users
@@ -57,7 +67,8 @@ valid topics: ciencia, deportes, cultura, politica, actualidad
 -   **POST** - [`/news`] - Permite añadir una noticia.✅
 -   **GET** - [`/news/:newsId`] - Retorna información de una noticia.✅
 -   **GET** - [`/news`] - Retorna el listado de noticias.✅
--   **POST** - [`/news/:newsId/photo`] - Añadir una foto a una noticia.✅
+-   **POST** - [`/news/:newsId/photos`] - Añadir una foto a una noticia.✅
 -   **POST** - [`/news/:newsId/votes`] - Votar una noticia positivamente o negativamente.✅
--   **DELETE** - [`/news/:newsId/delete`] - Borrar una noticia. ✅
--   **PUT** - [`/news/:newsId/`] - Edita una noticia.✅
+-   **DELETE** - [`/news/:id`] - Borrar una noticia. ✅
+-   **PUT** - [`/news/:id/`] - Edita una noticia.✅
+-   **GET** - [`news?topic=?`] - Retorna el listado de noticias de una tema especifico.✅
