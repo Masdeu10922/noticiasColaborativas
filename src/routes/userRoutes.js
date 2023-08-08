@@ -1,28 +1,44 @@
+// Importamos las dependencias.
 const express = require('express');
 const router = express.Router();
 
 //Importamos las funciones controladoras necesarias.
 const { authUser, userExists } = require('../middlewares');
 
+// Importamos las funciones controladoras finales.
 const {
-    newUser,
-    loginUser,
-    getUserProfile,
-    getOwnUser,
-    editUserPhoto,
-    editUserPass,
+    newUserController,
+    loginUserController,
+    getUserProfileController,
+    getOwnUserController,
+    editUserPhotoController,
+    editUserPassController,
+    editUserEmailController,
+    editUserBioController,
 } = require('../controllers/users');
 
 //Crear un usuario.
-router.post('/users/register', newUser);
+router.post('/users/register', newUserController);
 
-router.post('/users/login', loginUser);
+// Login de usuario.
+router.post('/users/login', loginUserController);
 
-router.get('/users/:userId', userExists, getUserProfile);
+// Obtener perfil público de un usuario.
+router.get('/users/:userId', userExists, getUserProfileController);
 
-router.get('/users', authUser, userExists, getOwnUser);
+// Obtener perfil privado de un usuario.
+router.get('/users', authUser, userExists, getOwnUserController);
 
-router.put('/users/photo', authUser, userExists, editUserPhoto);
+// Editar la foto de un usuario.
+router.put('/users/photo', authUser, userExists, editUserPhotoController);
 
-router.put('/users/password', authUser, userExists, editUserPass);
+// Editar la contraseña de un usuario.
+router.put('/users/password', authUser, userExists, editUserPassController);
+
+// Editar el email de un usuario.
+router.put('/users/email', authUser, userExists, editUserEmailController);
+
+// Editar la biografia de un usuario.
+router.put('/users/biography', authUser, userExists, editUserBioController);
+
 module.exports = router;

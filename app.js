@@ -1,16 +1,15 @@
+// Importamos las dependencias.
 require('dotenv').config();
-
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
 
 //Importamos las rutas
-const {
-    errorController,
-    notFoundController,
-} = require('./src/controllers/errors');
-
 const routes = require('./src/routes');
+
+// Importamos los errores.
+const errorController = require('./src/controllers/errors/errorController');
+const notFoundController = require('./src/controllers/errors/notFoundController');
 
 //Creamos el servidor
 const app = express();

@@ -1,8 +1,12 @@
+// Importamos las dependencias.
 const jwt = require('jsonwebtoken');
+
+// Importamos los errores.
 const {
     notAuthenticationError,
     invalidCredentialsError,
 } = require('../services/errorService');
+
 const authUser = (req, res, next) => {
     try {
         const { authorization } = req.headers;

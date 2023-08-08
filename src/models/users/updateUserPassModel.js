@@ -1,5 +1,9 @@
+// Importamos las dependencias.
 const bcrypt = require('bcrypt');
+
+// Importamos la función que devuelve una conexión con la base de datos.
 const getDb = require('../../db/getDb');
+
 const { invalidCredentialsError } = require('../../services/errorService');
 
 const updateUserPassModel = async (oldPass, newPass, userId) => {

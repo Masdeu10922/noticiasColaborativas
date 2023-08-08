@@ -1,4 +1,7 @@
+// Importamos las dependencias.
 const uuid = require('uuid');
+
+// Importamos la función que devuelve una conexión con la base de datos.
 const getDb = require('../../db/getDb');
 
 const insertNewsModel = async (title, intro, text, topic, userId) => {

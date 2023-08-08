@@ -1,4 +1,7 @@
+// Importamos la función que devuelve una conexión con la base de datos.
 const getDb = require('../db/getDb');
+
+// Importamos los errores.
 const { notFoundError } = require('../services/errorService');
 
 const userExists = async (req, res, next) => {
@@ -16,7 +19,7 @@ const userExists = async (req, res, next) => {
 
         // Lanzamos un error si el usuario no existe
         if (users.length < 1) {
-            notFoundError('user');
+            notFoundError('usuario');
         }
         next();
     } catch (err) {

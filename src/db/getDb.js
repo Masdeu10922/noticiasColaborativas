@@ -1,3 +1,4 @@
+// Importamos las dependencias.
 const mysql = require('mysql2/promise');
 
 // Obtenemos las variables de entorno necesarias mediante destructuring.

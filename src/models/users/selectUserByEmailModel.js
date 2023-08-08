@@ -1,4 +1,7 @@
+// Importamos la función que devuelve una conexión con la base de datos.
 const getDb = require('../../db/getDb');
+
+// Importamos los errores.
 const { invalidCredentialsError } = require('../../services/errorService');
 
 const selectUserByEmailModel = async (email) => {
@@ -23,3 +26,4 @@ const selectUserByEmailModel = async (email) => {
 };
 
 module.exports = selectUserByEmailModel;
+console.log();

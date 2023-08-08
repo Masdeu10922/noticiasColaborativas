@@ -24,26 +24,28 @@ const main = async () => {
         await connection.query(`
             CREATE TABLE IF NOT EXISTS news (
                 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                title VARCHAR(50) NOT NULL,
+                title VARCHAR(100) NOT NULL,
                 photo VARCHAR(100),
                 intro TEXT NOT NULL,
                 text TEXT NOT NULL,
-                topic VARCHAR(50) NOT NULL,
+                topic ENUM('ciencia', 'deportes', 'cultura', 'politica', 'actualidad'),
                 userId INT UNSIGNED NOT NULL,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (userId) REFERENCES users(id)
             )
         `);
         // Tabla de votos.
+        // value: 0 voto negativo, 1 voto positivo
         await connection.query(`
             CREATE TABLE IF NOT EXISTS votes (
-                id CHAR(36) PRIMARY KEY NOT NULL,
-                votesType BOOLEAN NOT NULL,
+                id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                value TINYINT NOT NULL,
                 userId INT UNSIGNED NOT NULL,
                 newsId INT UNSIGNED NOT NULL,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (userId) REFERENCES users(id),
-                FOREIGN KEY (newsId) REFERENCES news(id)
+                FOREIGN KEY (newsId) REFERENCES news(id),
+                UNIQUE(userId, newsId)
             )
         `);
         console.log('¡Tablas creadas!');

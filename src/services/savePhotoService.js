@@ -1,7 +1,10 @@
+// Importamos las dependencias.
 const fs = require('fs/promises');
 const path = require('path');
 const sharp = require('sharp');
 const uuid = require('uuid');
+
+// Importamos los errores.
 const { saveFileError } = require('./errorService');
 
 const savePhotoService = async (img, width) => {

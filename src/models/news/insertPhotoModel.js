@@ -1,3 +1,4 @@
+// Importamos la función que devuelve una conexión con la base de datos.
 const getDb = require('../../db/getDb');
 
 const insertPhotoModel = async (photoName, newsId) => {
