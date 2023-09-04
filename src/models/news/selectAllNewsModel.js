@@ -1,7 +1,7 @@
 // Importamos la función que devuelve una conexión con la base de datos.
 const getDb = require('../../db/getDb');
 
-const selectAllNewsModel = async (keyword = '', userId = '', date = '') => {
+const selectAllNewsModel = async (userId = '', keyword = '') => {
     let connection;
 
     try {
@@ -12,11 +12,12 @@ const selectAllNewsModel = async (keyword = '', userId = '', date = '') => {
             `SELECT 
                 N.id,
                 N.title,
+                N.intro,
                 N.topic,
                 N.photo,
                 U.userName,
-                IFNULL(SUM(v.value = 1), 0) AS vPos,
-				IFNULL(SUM(CASE WHEN v.value = 0 THEN 1 ELSE 0 END), 0) AS vNeg,
+                IFNULL(SUM(V.value = 1), 0) AS vPositive,
+				IFNULL(SUM(CASE WHEN V.value = 0 THEN 1 ELSE 0 END), 0) AS vNegative,
                 N.createdAt AS date
             FROM news N
             LEFT JOIN votes V ON V.newsId = N.id
@@ -25,14 +26,7 @@ const selectAllNewsModel = async (keyword = '', userId = '', date = '') => {
             GROUP BY N.id, date
             ORDER BY date DESC
             `,
-            [
-                userId,
-                userId,
-                `%${keyword}%`,
-                `%${keyword}%`,
-                `%${keyword}%`,
-                date,
-            ]
+            [`%${keyword}%`, `%${keyword}%`, `%${keyword}%`]
         );
 
         news.votes = Number(news.votes);

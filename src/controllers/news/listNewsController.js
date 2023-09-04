@@ -5,10 +5,10 @@ const selectAllNewsModel = require('../../models/news/selectAllNewsModel');
 // Función controladora final que retorna el listado de noticias.
 const listNewsController = async (req, res, next) => {
     try {
-        const { topic } = req.query;
+        const { topic, keyword } = req.query;
 
         if (topic) {
-            const news = await listTopicNewsModel(topic, req.user?.id);
+            const news = await listTopicNewsModel(req.users?.id, topic);
             res.send({
                 status: 'ok',
                 data: {
@@ -16,7 +16,7 @@ const listNewsController = async (req, res, next) => {
                 },
             });
         } else {
-            const news = await selectAllNewsModel(req.users?.id);
+            const news = await selectAllNewsModel(req.users?.id, keyword);
             res.send({
                 status: 'ok',
                 data: {

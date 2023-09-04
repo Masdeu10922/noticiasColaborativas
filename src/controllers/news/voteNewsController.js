@@ -17,10 +17,8 @@ const voteNewsController = async (req, res, next) => {
         // Obtenemos los detalles de la noticia.
         const news = await selectNewsByIdModel(newsId);
 
-        //console.log(typeof news.userId, typeof req.user.id, typeof value);
-        //console.log(news.userId, req.user.id);
-
         // Si somos los dueños de la noticia lanzamos un error.
+        console.log(news.userId);
         if (news.userId === req.user.id) {
             cannotVoteOwnNewsError();
         }

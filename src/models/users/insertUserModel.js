@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 // Importamos la función que devuelve una conexión con la base de datos.
 const getDb = require('../../db/getDb');
 
+// Importamos los errores.
 const { emailAlreadyRegisteredError } = require('../../services/errorService');
 
 const insertUserModel = async (userName, email, password, biography) => {

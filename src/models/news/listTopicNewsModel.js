@@ -1,7 +1,7 @@
 // Importamos la función que devuelve una conexión con la base de datos.
 const getDb = require('../../db/getDb');
 
-const listTopicNewsModel = async (topic, userId = '') => {
+const listTopicNewsModel = async (userId, topic) => {
     let connection;
     try {
         connection = await getDb();
@@ -13,8 +13,8 @@ const listTopicNewsModel = async (topic, userId = '') => {
                 N.title,
                 N.topic,
                 N.photo,
-                IFNULL(SUM(v.value = 1), 0) AS vPos,
-				IFNULL(SUM(CASE WHEN v.value = 0 THEN 1 ELSE 0 END), 0) AS vNeg,
+                IFNULL(SUM(V.value = 1), 0) AS vPos,
+				IFNULL(SUM(CASE WHEN V.value = 0 THEN 1 ELSE 0 END), 0) AS vNeg,
                 N.createdAt as date
             FROM news N
             LEFT JOIN votes AS V ON V.newsId=N.id

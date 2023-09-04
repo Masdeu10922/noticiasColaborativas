@@ -26,4 +26,3 @@ const selectUserByEmailModel = async (email) => {
 };
 
 module.exports = selectUserByEmailModel;
-console.log();

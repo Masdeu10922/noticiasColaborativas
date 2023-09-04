@@ -69,7 +69,4 @@ router.post(
 // Obtener info de una noticia concreta
 router.get('/news/:newsId', authUserOptional, newsExists, getNewsController);
 
-// Obtener noticias de un tema especifico
-router.get('/news?:topic', authUserOptional, newsExists, listNewsController);
-
 module.exports = router;

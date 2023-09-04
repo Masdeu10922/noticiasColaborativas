@@ -19,9 +19,10 @@ const canEdit = async (req, res, next) => {
         const news = await selectNewsByIdModel(newsId);
 
         //Si no somos los propietarios lanzamos un error.
-        //if (news.userId !== req.user.id) {
-        //unauthorizedUserError();
-        //}
+
+        if (news.userId !== req.user.id) {
+            unauthorizedUserError();
+        }
 
         next();
     } catch (err) {

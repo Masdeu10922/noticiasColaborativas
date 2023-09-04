@@ -11,6 +11,7 @@ const selectNewsByIdModel = async (newsId, userId = '') => {
             `SELECT 
                 N.id,
                 N.title,
+                N.intro,
                 N.topic,
                 N.photo,
                 N.text,
@@ -18,7 +19,6 @@ const selectNewsByIdModel = async (newsId, userId = '') => {
                 BIT_OR(V.userId = ?) AS votedByMe,
                 SUM(CASE WHEN V.value = 1 THEN 1 ELSE 0 END) AS vPos,
                 SUM(CASE WHEN V.value = 0 THEN 1 ELSE 0 END) AS vNeg,
-                AVG(IFNULL(V.value, 0)) AS vote,
                 N.createdAt as date,
                 N.userId
             FROM news N
@@ -26,7 +26,7 @@ const selectNewsByIdModel = async (newsId, userId = '') => {
             INNER JOIN users U ON U.id = N.userId
             WHERE N.id = ? 
             GROUP BY N.id
-            ORDER BY date DESC, vote DESC
+            ORDER BY date DESC
             `,
             [userId, newsId]
         );
@@ -35,19 +35,15 @@ const selectNewsByIdModel = async (newsId, userId = '') => {
         const newsWithVotes = {
             id: news[0].id,
             title: news[0].title,
+            intro: news[0].intro,
             topic: news[0].topic,
             photo: news[0].photo,
             text: news[0].text,
             userName: news[0].userName,
-            votedByMe: news[0].votedByMe,
-            votes: {
-                positive: news[0].vPos,
-                negative: news[0].vNeg,
-                total: news[0].vPos - news[0].vNeg,
-            },
-            vote: news[0].vote,
-            date: news[0].date,
             userId: news[0].userId,
+            votedByMe: news[0].votedByMe,
+            vPositive: news[0].vPos,
+            vNegative: news[0].vNeg,
         };
 
         return newsWithVotes;
