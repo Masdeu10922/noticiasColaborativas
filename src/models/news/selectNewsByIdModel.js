@@ -40,6 +40,7 @@ const selectNewsByIdModel = async (newsId, userId = '') => {
             photo: news[0].photo,
             text: news[0].text,
             userName: news[0].userName,
+            date: news[0].date,
             userId: news[0].userId,
             votedByMe: news[0].votedByMe,
             vPositive: news[0].vPos,

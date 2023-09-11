@@ -15,8 +15,9 @@ const selectAllNewsModel = async (userId = '', keyword = '') => {
                 N.intro,
                 N.topic,
                 N.photo,
+                N.userId,
                 U.userName,
-                IFNULL(SUM(V.value = 1), 0) AS vPositive,
+                IFNULL(SUM(V.value = 1), 0) AS vPositiveeee,
 				IFNULL(SUM(CASE WHEN V.value = 0 THEN 1 ELSE 0 END), 0) AS vNegative,
                 N.createdAt AS date
             FROM news N

@@ -6,7 +6,7 @@ const selectUserByIdModel = async (userId) => {
     try {
         connection = await getDb();
         const [users] = await connection.query(
-            `SELECT u.id AS user_id, u.username, u.photo AS user_photo, u.email, u.biography, u.createdAt AS user_createdAt
+            `SELECT u.id AS user_id, u.userName, u.photo AS user_photo, u.email, u.biography, u.createdAt AS user_createdAt
             FROM users u
             WHERE u.id = ?`,
             [userId]
@@ -19,7 +19,7 @@ const selectUserByIdModel = async (userId) => {
         // Construir el objeto de usuario sin noticias por defecto
         const user = {
             id: users[0].user_id,
-            username: users[0].username,
+            userName: users[0].userName,
             email: users[0].email,
             photo: users[0].user_photo,
             biography: users[0].biography,
