@@ -1,6 +1,6 @@
 // Importamos los modelos.
 const selectNewsByIdModel = require('../../models/news/selectNewsByIdModel');
-const insertVoteModel = require('../../models/news/insertVoteModel');
+const voteModel = require('../../models/news/voteModel');
 
 // Importamos los errores.
 const {
@@ -12,7 +12,7 @@ const {
 const voteNewsController = async (req, res, next) => {
     try {
         const { newsId } = req.params;
-        const { value } = req.body;
+        let { value } = req.body;
 
         // Obtenemos los detalles de la noticia.
         const news = await selectNewsByIdModel(newsId);
@@ -29,8 +29,11 @@ const voteNewsController = async (req, res, next) => {
             invalidVoteError();
         }
 
-        // Insertamos el voto y obtenemos la nueva media.
-        const numVotes = await insertVoteModel(value, newsId, req.user.id);
+        value = parseInt(value);
+        console.log('Cambiando el tipo', typeof value);
+
+        // Insertamos el voto.
+        const numVotes = await voteModel(value, newsId, req.user.id);
 
         res.send({
             status: 'ok',
