@@ -23,7 +23,7 @@ const voteNewsController = async (req, res, next) => {
             cannotVoteOwnNewsError();
         }
 
-        const validVotes = ['0', '1'];
+        const validVotes = ['2', '1'];
 
         if (!validVotes.includes(value)) {
             invalidVoteError();

@@ -63,7 +63,7 @@ const voteModel = async (value, newsId, userId) => {
             `
             SELECT count(value) AS vNeg 
             FROM votes 
-            WHERE newsId = ? AND value = 0`,
+            WHERE newsId = ? AND value = 2`,
             [newsId]
         );
 
@@ -77,3 +77,4 @@ const voteModel = async (value, newsId, userId) => {
 };
 
 module.exports = voteModel;
+////

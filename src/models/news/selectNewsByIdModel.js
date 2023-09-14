@@ -18,7 +18,7 @@ const selectNewsByIdModel = async (newsId, userId = '') => {
                 U.userName,
                 BIT_OR(V.userId = ?) AS votedByMe,
                 SUM(CASE WHEN V.value = 1 THEN 1 ELSE 0 END) AS vPos,
-                SUM(CASE WHEN V.value = 0 THEN 1 ELSE 0 END) AS vNeg,
+                SUM(CASE WHEN V.value = 2 THEN 1 ELSE 0 END) AS vNeg,
                 N.createdAt as date,
                 N.userId
             FROM news N
