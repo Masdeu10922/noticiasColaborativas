@@ -25,7 +25,7 @@ const {
 router.post('/news', authUser, userExists, newNewsController);
 
 //Agregar una foto a una noticia existente
-router.post(
+router.put(
     '/news/:newsId/photos',
     authUser,
     userExists,
