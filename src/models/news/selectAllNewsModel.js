@@ -23,11 +23,11 @@ const selectAllNewsModel = async (userId = '', keyword = '') => {
             FROM news N
             LEFT JOIN votes V ON V.newsId = N.id
             INNER JOIN users U ON U.id = N.userId
-            WHERE N.title LIKE ? OR N.topic LIKE ? OR N.text LIKE ? 
+            WHERE N.title LIKE ? OR N.text LIKE ? 
             GROUP BY N.id, date
             ORDER BY date DESC
             `,
-            [`%${keyword}%`, `%${keyword}%`, `%${keyword}%`]
+            [`%${keyword}%`, `%${keyword}%`]
         );
 
         news.votes = Number(news.votes);

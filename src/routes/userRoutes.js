@@ -15,6 +15,7 @@ const {
     editUserPassController,
     editUserEmailController,
     editUserBioController,
+    editUserNameController,
 } = require('../controllers/users');
 
 //Crear un usuario.
@@ -31,6 +32,9 @@ router.get('/users', authUser, userExists, getOwnUserController);
 
 // Editar la foto de un usuario.
 router.put('/users/photo', authUser, userExists, editUserPhotoController);
+
+// Editar el nombre de un usuario.
+router.put('/users/name', authUser, userExists, editUserNameController);
 
 // Editar la contraseña de un usuario.
 router.put('/users/password', authUser, userExists, editUserPassController);

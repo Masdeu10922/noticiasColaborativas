@@ -6,6 +6,7 @@ const getOwnUserController = require('./getOwnUserController');
 const getUserProfileController = require('./getUserProfileController');
 const loginUserController = require('./loginUserController');
 const newUserController = require('./newUserController');
+const editUserNameController = require('./editUserNameController');
 
 module.exports = {
     newUserController,
@@ -16,4 +17,5 @@ module.exports = {
     editUserPassController,
     editUserEmailController,
     editUserBioController,
+    editUserNameController,
 };
